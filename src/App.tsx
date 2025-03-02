@@ -81,7 +81,9 @@ export default function App() {
             {/* Screenshot */}
             <h4>Screenshot:</h4>
             <img
-              src={`data:image/jpg;base64,${item?.screenshots}`}
+            src={item?.screenshots?.startsWith("data:image/jpg;base64,") 
+              ? item.screenshots 
+              : `data:image/jpg;base64,${item?.screenshots}`} 
               alt={`Screenshot ${index + 1}`}
               style={{ width: '300px', height: 'auto', cursor: 'pointer' }}
               onClick={() => handleImageClick(item?.screenshots)}
@@ -108,7 +110,9 @@ export default function App() {
           onClick={closeModal}
         >
           <img
-            src={`data:image/jpg;base64,${selectedImage}`}
+            src={selectedImage?.startsWith("data:image/jpg;base64,") 
+              ? selectedImage 
+              : `data:image/jpg;base64,${selectedImage}`} 
             alt="Full screen"
             style={{ width: '80%', height: 'auto' }}
           />
